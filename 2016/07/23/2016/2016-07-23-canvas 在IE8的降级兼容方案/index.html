@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="前端工具," />
+  <meta name="keywords" content="canvas," />
 
 
 
@@ -84,38 +84,22 @@
 
 
 
-<meta name="description" content="什么是liveReload？livereload是一个web开发辅助工具，当我们修改完html、css和js的时候会自动刷新浏览器，不需要再F5了。这样在双屏切图、写js代码的时候会提高很多效率；
-就是说有了这玩意你不用手动刷新了，是不是很爽？
-如何使用
-由于我的开发机是 mac 所以以下操作都是基于mac os
+<meta name="description" content="最近在做基于Chart.js的数据可视化图表展示，被要求需要兼容到IE8。经过搜索发现了google这个开源项目ExplorerCanvasIE8及以下的浏览器上不兼容canvas，可以使用ExplorerCanvas做兼容性的替代。
 
-安装
-注意：由于我使用的是 npm进行安装 且需要配合Chrome插件进行使用 因">
+兼容性检测1var canvasSupported = !!document.createElement(&amp;apos;canvas&amp;apos;).getCont">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前度自动刷新工具liveReload">
-<meta property="og:url" content="https://fancyfx.github.io/2016/08/06/2016/2016-08-06-livereload/index.html">
+<meta property="og:title" content="canvas 在IE8的降级兼容方案">
+<meta property="og:url" content="https://fancyfx.github.io/2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/index.html">
 <meta property="og:site_name" content="Fancyxi的博客">
-<meta property="og:description" content="什么是liveReload？livereload是一个web开发辅助工具，当我们修改完html、css和js的时候会自动刷新浏览器，不需要再F5了。这样在双屏切图、写js代码的时候会提高很多效率；
-就是说有了这玩意你不用手动刷新了，是不是很爽？
-如何使用
-由于我的开发机是 mac 所以以下操作都是基于mac os
+<meta property="og:description" content="最近在做基于Chart.js的数据可视化图表展示，被要求需要兼容到IE8。经过搜索发现了google这个开源项目ExplorerCanvasIE8及以下的浏览器上不兼容canvas，可以使用ExplorerCanvas做兼容性的替代。
 
-安装
-注意：由于我使用的是 npm进行安装 且需要配合Chrome插件进行使用 因">
-<meta property="og:image" content="https://fancyfx.github.io/img/liverekoad/未启动.png">
-<meta property="og:image" content="https://fancyfx.github.io/img/liverekoad/启动成功.png">
-<meta property="og:image" content="https://fancyfx.github.io/img/liverekoad/app.png">
-<meta property="og:updated_time" content="2016-08-20T12:34:49.000Z">
+兼容性检测1var canvasSupported = !!document.createElement(&amp;apos;canvas&amp;apos;).getCont">
+<meta property="og:updated_time" content="2016-09-05T11:24:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前度自动刷新工具liveReload">
-<meta name="twitter:description" content="什么是liveReload？livereload是一个web开发辅助工具，当我们修改完html、css和js的时候会自动刷新浏览器，不需要再F5了。这样在双屏切图、写js代码的时候会提高很多效率；
-就是说有了这玩意你不用手动刷新了，是不是很爽？
-如何使用
-由于我的开发机是 mac 所以以下操作都是基于mac os
+<meta name="twitter:title" content="canvas 在IE8的降级兼容方案">
+<meta name="twitter:description" content="最近在做基于Chart.js的数据可视化图表展示，被要求需要兼容到IE8。经过搜索发现了google这个开源项目ExplorerCanvasIE8及以下的浏览器上不兼容canvas，可以使用ExplorerCanvas做兼容性的替代。
 
-安装
-注意：由于我使用的是 npm进行安装 且需要配合Chrome插件进行使用 因">
-<meta name="twitter:image" content="https://fancyfx.github.io/img/liverekoad/未启动.png">
+兼容性检测1var canvasSupported = !!document.createElement(&amp;apos;canvas&amp;apos;).getCont">
 
 
 
@@ -123,7 +107,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    sidebar: {"position":"right","display":"post"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -136,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="https://fancyfx.github.io/2016/08/06/2016/2016-08-06-livereload/"/>
+  <link rel="canonical" href="https://fancyfx.github.io/2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/"/>
 
-  <title> 前度自动刷新工具liveReload | Fancyxi的博客 </title>
+  <title> canvas 在IE8的降级兼容方案 | Fancyxi的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -159,7 +143,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -220,16 +204,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -268,7 +242,7 @@
             
             
               
-                前度自动刷新工具liveReload
+                canvas 在IE8的降级兼容方案
               
             
           </h1>
@@ -280,8 +254,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-06T19:01:00+08:00" content="2016-08-06">
-              2016-08-06
+            <time itemprop="dateCreated" datetime="2016-07-23T16:36:00+08:00" content="2016-07-23">
+              2016-07-23
             </time>
           </span>
 
@@ -291,8 +265,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/06/2016/2016-08-06-livereload/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/06/2016/2016-08-06-livereload/" itemprop="commentsCount"></span>
+                <a href="/2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -315,26 +289,16 @@
       
 
       
-        <h1 id="什么是liveReload？"><a href="#什么是liveReload？" class="headerlink" title="什么是liveReload？"></a>什么是liveReload？</h1><p>livereload是一个web开发辅助工具，当我们修改完html、css和js的时候会自动刷新浏览器，不需要再F5了。这样在双屏切图、写js代码的时候会提高很多效率；</p>
-<p><strong>就是说有了这玩意你不用手动刷新了，是不是很爽？</strong></p>
-<h1 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h1><blockquote>
-<p>由于我的开发机是 mac 所以以下操作都是基于mac os</p>
+        <blockquote>
+<p>最近在做基于Chart.js的数据可视化图表展示，被要求需要兼容到IE8。<br>经过搜索发现了google这个开源项目<a href="https://github.com/arv/explorercanvas" target="_blank" rel="external">ExplorerCanvas</a><br>IE8及以下的浏览器上不兼容canvas，可以使用ExplorerCanvas做兼容性的替代。</p>
 </blockquote>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><blockquote>
-<p>注意：由于我使用的是 npm进行安装 且需要配合Chrome插件进行使用 因此如果你没有安装node.js和无法翻墙安装Chrome插件  下面的操作你可能无法生效</p>
-</blockquote>
-<p>1.使用如下命令安装  LiveReload<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i livereload -g</div></pre></td></tr></table></figure></p>
-<p>2.安装 Chrome 插件 <a href="https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei" target="_blank" rel="external">下载地址</a><br><a id="more"></a></p>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>1.由于Chrome livereload插件 无法识别flie 协议 因此在本地环境需要配置http服务器</p>
-<p>这里简单说一下 mac os 下的 Apache http服务器的使用(Mac OS下自带了apache 因此可以直接简单配置即可)</p>
-<ul>
-<li>在终端输入 open /etc/apache2 找到httpd.conf 打开编辑</li>
-<li>找到这个DocumentRoot，修改成你想要的地址即可。 这个地址就是你部署项目的文件夹， 你的项目文件必须放到你配置的这个文件夹里面才可以用 <a href="http://localhost" target="_blank" rel="external">http://localhost</a> 访问</li>
-</ul>
-<p><strong>关于mac 下Apache 详细配置</strong> <a href="http://blog.csdn.net/seafishyls/article/details/44546809" target="_blank" rel="external">请看这里</a></p>
-<p>2.配置好了http服务 在命令行打开 项目目录 执行 <code>livereload</code></p>
-<p>3.然后在 Chrome 中点击插件图标启动监听就可以了<br> 注意：点一下 livereload插件 中心圆点变实心就是启动成功了<br><img src="/img/liverekoad/未启动.png" alt="未启动"> 未启动<img src="/img/liverekoad/启动成功.png" alt="启动成功"> 启动成功</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>如果你觉得上面的操作很麻烦你也可以使用图形化的桌面应用LiveReload.app ，这款应用同时有 Mac 版和 Windows 版，使用起来也很简单，通过图形界面设置好需要监听文件所在的文件夹，然后将一段脚本插入到 HTML 页面即可<br><a href="ck.livereload.com/knowledgebase/articles/67441-how-do-i-start-using-livereload">下载地址</a><br><img src="/img/liverekoad/app.png" alt="livereload.app"></p>
+<h2 id="兼容性检测"><a href="#兼容性检测" class="headerlink" title="兼容性检测"></a>兼容性检测</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var canvasSupported = !!document.createElement(&apos;canvas&apos;).getContext;</div></pre></td></tr></table></figure>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>excanvas的例子中是这样使用的：</p>
+<p>#在html的<code>&lt;head&gt;&lt;/head&gt;</code>内引入所有的js</p>
+<p>#在html中的<code>&lt;body&gt;</code>的<code>onload</code>上绑定canvas绘图的初始方法</p>
+<p>#禁用动画<code>new Chart(ctx).Line(dataLine, {animation: false});</code><br>经过测试，发现：</p>
+<p>#<code>canvas</code>标签必须写在<code>excanvas</code>初始方法之后，即：<code>canvas</code>必须在<code>excanvas</code>初始完成后生成</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://github.com/chartjs/Chart.js/issues/477" target="_blank" rel="external">Error on IE7 and IE8, Object doesn’t support property or method ‘measureText’</a></p>
 
       
     </div>
@@ -357,7 +321,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/前端工具/" rel="tag">#前端工具</a>
+            <a href="/tags/canvas/" rel="tag">#canvas</a>
           
         </div>
       
@@ -366,16 +330,12 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/23/2016-07-23-构造函数/" rel="next" title="JavaScript 构造函数">
-                <i class="fa fa-chevron-left"></i> JavaScript 构造函数
-              </a>
-            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/08/20/2016/2016-08-20-js组件的基本格式/" rel="prev" title="js组件的基本格式">
-                js组件的基本格式 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/07/23/2016-07-23-构造函数/" rel="prev" title="JavaScript 构造函数">
+                JavaScript 构造函数 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -425,8 +385,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/08/06/2016/2016-08-06-livereload/"
-           data-title="前度自动刷新工具liveReload" data-url="https://fancyfx.github.io/2016/08/06/2016/2016-08-06-livereload/">
+      <div class="ds-thread" data-thread-key="2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/"
+           data-title="canvas 在IE8的降级兼容方案" data-url="https://fancyfx.github.io/2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/">
       </div>
     
   </div>
@@ -471,7 +431,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -481,7 +441,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -512,6 +472,15 @@
                 </a>
               </span>
             
+              <span class="links-of-author-item">
+                <a href="fangxi520@icloud.com" target="_blank" title="E-mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                  E-mail
+                </a>
+              </span>
+            
           
         </div>
 
@@ -530,7 +499,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是liveReload？"><span class="nav-number">1.</span> <span class="nav-text">什么是liveReload？</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何使用"><span class="nav-number">2.</span> <span class="nav-text">如何使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">2.0.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用"><span class="nav-number">2.0.2.</span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">2.0.3.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#兼容性检测"><span class="nav-number">1.</span> <span class="nav-text">兼容性检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法"><span class="nav-number">2.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
             
           </div>
         </section>

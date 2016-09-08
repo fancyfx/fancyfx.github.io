@@ -100,7 +100,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     scheme: 'Mist',
-    sidebar: {"position":"left","display":"post"},
+    sidebar: {"position":"right","display":"post"},
     fancybox: true,
     motion: true,
     duoshuo: {
@@ -136,7 +136,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
+  <div class="container one-collumn sidebar-position-right 
    page-home 
  ">
     <div class="headband"></div>
@@ -199,16 +199,6 @@
           </a>
         </li>
       
-        
-        <li class="menu-item menu-item-about">
-          <a href="/about" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            关于
-          </a>
-        </li>
-      
 
       
     </ul>
@@ -248,8 +238,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/20/2016/2016-08-20-js组件的基本格式/" itemprop="url">
-                  js组件的基本格式
+                <a class="post-title-link" href="/2016/08/09/2016/2016-08-09-javascript模块化/" itemprop="url">
+                  JavaScript模块化
                 </a>
               
             
@@ -262,8 +252,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-20T20:18:00+08:00" content="2016-08-20">
-              2016-08-20
+            <time itemprop="dateCreated" datetime="2016-08-09T02:59:00+08:00" content="2016-08-09">
+              2016-08-09
             </time>
           </span>
 
@@ -273,8 +263,115 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/20/2016/2016-08-20-js组件的基本格式/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/20/2016/2016-08-20-js组件的基本格式/" itemprop="commentsCount"></span>
+                <a href="/2016/08/09/2016/2016-08-09-javascript模块化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/09/2016/2016-08-09-javascript模块化/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="为什么要有模块化？"><a href="#为什么要有模块化？" class="headerlink" title="为什么要有模块化？"></a>为什么要有模块化？</h2><p>我先讲个故事：某公司开发一个项目，刚开始项目比较简单<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;a.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;b.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;c.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">// 只有三个功能 a,b,c 但是b依赖于a c依赖于b</div><div class="line">// 所以刚开始是这样引入文件的</div></pre></td></tr></table></figure></p>
+<p>后来项目变复杂了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;a.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;b.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;c.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;a-1.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;b-1.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;c-1.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">// 加入的更多功能</div><div class="line">// 且依赖关系变的更复杂了 (——&gt; 依赖于)</div><div class="line">//  a-1 ——&gt; a &amp;&amp; b</div><div class="line">//  b-1 ——&gt; b &amp;&amp; a-1</div><div class="line">//  c-1 ——&gt; b &amp;&amp; a-1 &amp;&amp; c</div></pre></td></tr></table></figure></p>
+<p>是不是发现上面的依赖关系变得很复杂了，如果项目越来越大，我的天那这些引入文件的依赖关系，想想都头疼。</p>
+<p>怎么办了？于是出现一个模块化的方式来引入文件，想要什么功能，就加载什么模块。</p>
+<h2 id="实现模块化的方式"><a href="#实现模块化的方式" class="headerlink" title="实现模块化的方式"></a>实现模块化的方式</h2><p>但是，Javascript模块没有官方规范。<br>所以出现几种比较通用的模块化规范：<a href="http://wiki.commonjs.org/wiki/CommonJS">CommonJS</a>和<a href="https://github.com/amdjs/amdjs-api/wiki/AMD">AMD</a>、<a href="http://seajs.org/docs/#intro">CMD</a><br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/08/09/2016/2016-08-09-javascript模块化/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/23/2016/2016-07-23-简单的点击非当前区域隐藏元素实现/" itemprop="url">
+                  简单的点击非当前区域隐藏元素实现
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-23T20:15:00+08:00" content="2016-07-23">
+              2016-07-23
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/23/2016/2016-07-23-简单的点击非当前区域隐藏元素实现/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/23/2016/2016-07-23-简单的点击非当前区域隐藏元素实现/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -299,7 +396,10 @@
       
         
           
-            <h2 id="组件的基本结构"><a href="#组件的基本结构" class="headerlink" title="组件的基本结构"></a>组件的基本结构</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">(function(window,document)&#123;</div><div class="line">   function Calendar(options)&#123;</div><div class="line">      //传入配置的中的参数</div><div class="line">      this.init();</div><div class="line">   &#125;</div><div class="line">   Calendar.prototype=&#123;</div><div class="line">        init:function()&#123;</div><div class="line">           this.createDom();</div><div class="line">           this.loadCss();</div><div class="line">           this.cacheDom();</div><div class="line">           this.bindEvents();</div><div class="line">           this.render();</div><div class="line">        &#125;,</div><div class="line">        loadCss:function()&#123;</div><div class="line">           // 把组件所需的样式表动态加载进来</div><div class="line">        &#125;,</div><div class="line">        createDom:function()&#123;</div><div class="line">           // 创建dom对象或者创建html片段或者创建template</div><div class="line">        &#125;,</div><div class="line">        cacheDom:function()&#123;</div><div class="line">           // 存储dom 对象</div><div class="line">        &#125;,</div><div class="line">        bindEvents:function()&#123;</div><div class="line">           //事件绑定</div><div class="line">        &#125;,</div><div class="line">        render:function()&#123;</div><div class="line">          //渲染函数，更新数据或样式</div><div class="line">        &#125;</div><div class="line">   &#125;</div><div class="line">   window.Calendar=Calendar;//把组件对象绑定到全局</div><div class="line">&#125;(window,document));</div></pre></td></tr></table></figure>
+            <blockquote>
+<p>我们都遇到过这样的需求，下面是一种我觉得比较简单的实现。直接看代码</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$(document).mouseup(function(e)&#123;</div><div class="line">  var _con = $(&apos; 目标区域 &apos;);   // 设置目标区域</div><div class="line">  if(!_con.is(e.target) &amp;&amp; _con.has(e.target).length === 0)&#123; // Mark 1</div><div class="line">    some code...   // 功能代码</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line">/* Mark 1 的原理：</div><div class="line">判断点击事件发生在区域外的条件是：</div><div class="line">1. 点击事件的对象不是目标区域本身</div><div class="line">2. 事件对象同时也不是目标区域的子元素</div><div class="line">*/</div></pre></td></tr></table></figure>
 
           
         
@@ -349,7 +449,7 @@
             
               
                 
-                <a class="post-title-link" href="/2016/08/06/2016/2016-08-06-livereload/" itemprop="url">
+                <a class="post-title-link" href="/2016/07/23/2016/2016-07-23-livereload/" itemprop="url">
                   前度自动刷新工具liveReload
                 </a>
               
@@ -363,8 +463,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-08-06T19:01:00+08:00" content="2016-08-06">
-              2016-08-06
+            <time itemprop="dateCreated" datetime="2016-07-23T19:01:00+08:00" content="2016-07-23">
+              2016-07-23
             </time>
           </span>
 
@@ -374,8 +474,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/08/06/2016/2016-08-06-livereload/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/06/2016/2016-08-06-livereload/" itemprop="commentsCount"></span>
+                <a href="/2016/07/23/2016/2016-07-23-livereload/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/23/2016/2016-07-23-livereload/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -410,7 +510,7 @@
 <p>1.使用如下命令安装  LiveReload<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i livereload -g</div></pre></td></tr></table></figure></p>
 <p>2.安装 Chrome 插件 <a href="https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei">下载地址</a><br>
           <div class="post-more-link text-center">
-            <a class="btn" href="/2016/08/06/2016/2016-08-06-livereload/#more" rel="contents">
+            <a class="btn" href="/2016/07/23/2016/2016-07-23-livereload/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -549,6 +649,116 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/" itemprop="url">
+                  canvas 在IE8的降级兼容方案
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-23T16:36:00+08:00" content="2016-07-23">
+              2016-07-23
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>最近在做基于Chart.js的数据可视化图表展示，被要求需要兼容到IE8。<br>经过搜索发现了google这个开源项目<a href="https://github.com/arv/explorercanvas" target="_blank" rel="external">ExplorerCanvas</a><br>IE8及以下的浏览器上不兼容canvas，可以使用ExplorerCanvas做兼容性的替代。</p>
+</blockquote>
+<h2 id="兼容性检测"><a href="#兼容性检测" class="headerlink" title="兼容性检测"></a>兼容性检测</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var canvasSupported = !!document.createElement(&apos;canvas&apos;).getContext;</div></pre></td></tr></table></figure>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>excanvas的例子中是这样使用的：</p>
+<p>#在html的<code>&lt;head&gt;&lt;/head&gt;</code>内引入所有的js</p>
+<p>#在html中的<code>&lt;body&gt;</code>的<code>onload</code>上绑定canvas绘图的初始方法</p>
+<p>#禁用动画<code>new Chart(ctx).Line(dataLine, {animation: false});</code><br>经过测试，发现：</p>
+<p>#<code>canvas</code>标签必须写在<code>excanvas</code>初始方法之后，即：<code>canvas</code>必须在<code>excanvas</code>初始完成后生成</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://github.com/chartjs/Chart.js/issues/477" target="_blank" rel="external">Error on IE7 and IE8, Object doesn’t support property or method ‘measureText’</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -590,7 +800,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -600,7 +810,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -628,6 +838,15 @@
                     <i class="fa fa-fw fa-weibo"></i>
                   
                   Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="fangxi520@icloud.com" target="_blank" title="E-mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                  E-mail
                 </a>
               </span>
             
