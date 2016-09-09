@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>demo-听指令的小方块</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="bg">
+  <h1>听指令的小方块</h1>
+  <table id="game"></table>
+  <div class="a-star">
+    <h3>A* 寻路算法快捷演示</h4>
+    <label>输入终点坐标：</label>
+    <input type="text" placeholder="x,y(1~10)">
+    <button type="button" name="button">A*</button>
+  </div>
+  <div class="zx">
+  <span id="codeLine" onscroll="document.getElementById('codeText').scrollTop = this.scrollTop;"><i class="error-hide">1</i>
+  </span>
+  <textarea placeholder="请输入指令" name="name"  id="codeText" onscroll="document.getElementById('codeLine').scrollTop = this.scrollTop;"></textarea>
+  <div class="ml">
+      <button type="button" name="button">随机生成墙</button>
+      <button type="button" name="button">生成预设指令</button>
+      <button type="button" name="button">执行</button>
+      <button type="button" name="button">重置命令输入框</button>
+      <button type="button" name="button">重置页面元素</button>
+  </div>
+  </div>
+  <span class="desc">
+    指令说明：
+    <br>
+    GO：向箭头的方向前进一格
+    <br>
+    TUN LEF：向左转（逆时针旋转90度）
+    <br>
+    TUN RIG：向右转（顺时针旋转90度）
+    <br>
+    TUN BAC：旋转180度
+    <br>
+    TRA LEF：向屏幕的左侧移动一格，方向不变
+    <br>
+    TRA TOP：向屏幕的上面移动一格，方向不变
+    <br>
+    TRA RIG：向屏幕的右侧移动一格，方向不变
+    <br>
+    TRA BOT：向屏幕的下面移动一格，方向不变
+    <br>
+    MOV LEF：方向转向屏幕左侧，并向屏幕的左侧移动一格
+    <br>
+    MOV TOP：方向转向屏幕上面，向屏幕的上面移动一格
+    <br>
+    MOV RIG：方向转向屏幕右侧，向屏幕的右侧移动一格
+    <br>
+    MOV BOT：方向转向屏幕下面，向屏幕的下面移动一格
+    <strong>注意：</strong><br>
+    GO TAR MOV 指令可以带参数 例：GO 1 <br>
+    参数只能是1~9的正整数 <br>
+    指令中间必须有一个空格 <br>
+    每一行只能输入一条指令
+  </span>
+</div>
+<script type="text/javascript" src="js/main.js"></script>
+<script type="text/javascript" src="js/pieces.js"></script>
+<script type="text/javascript" src="js/code.js"></script>
+<script type="text/javascript" src="js/wall.js"></script>
+<script type="text/javascript" src="js/pathfinding.js"></script>
+</body>
+</html>
