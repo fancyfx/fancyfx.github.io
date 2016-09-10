@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="canvas," />
+  <meta name="keywords" content="web本地存储," />
 
 
 
@@ -84,22 +84,22 @@
 
 
 
-<meta name="description" content="最近在做基于Chart.js的数据可视化图表展示，被要求需要兼容到IE8。经过搜索发现了google这个开源项目ExplorerCanvasIE8及以下的浏览器上不兼容canvas，可以使用ExplorerCanvas做兼容性的替代。
-
-兼容性检测1var canvasSupported = !!document.createElement(&amp;apos;canvas&amp;apos;).getCont">
+<meta name="description" content="1. 什么是Storage？  Storage又叫DOM存储，是W3C Web存储规范里面的一种。DOM存储被设计为用来提供一个更大存储量,更安全,更便捷的存储方法,从而可以代替掉将一些不需要让服务器知道的信息存储到cookies里的这种传统方法。
+  本文主要介绍Storage 最主要的2个对象sessionStorage和localStorage。  他们是在HTM5中引入的2个新的存储对象，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="canvas 在IE8的降级兼容方案">
-<meta property="og:url" content="https://fancyfx.github.io/2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/index.html">
+<meta property="og:title" content="web本地存储之Storage(DOM存储)">
+<meta property="og:url" content="https://fancyfx.github.io/2016/07/24/2016/2016-07-24-web本地存储之Storage(DOM存储)/index.html">
 <meta property="og:site_name" content="Fancyxi的博客">
-<meta property="og:description" content="最近在做基于Chart.js的数据可视化图表展示，被要求需要兼容到IE8。经过搜索发现了google这个开源项目ExplorerCanvasIE8及以下的浏览器上不兼容canvas，可以使用ExplorerCanvas做兼容性的替代。
-
-兼容性检测1var canvasSupported = !!document.createElement(&amp;apos;canvas&amp;apos;).getCont">
-<meta property="og:updated_time" content="2016-09-05T11:24:45.000Z">
+<meta property="og:description" content="1. 什么是Storage？  Storage又叫DOM存储，是W3C Web存储规范里面的一种。DOM存储被设计为用来提供一个更大存储量,更安全,更便捷的存储方法,从而可以代替掉将一些不需要让服务器知道的信息存储到cookies里的这种传统方法。
+  本文主要介绍Storage 最主要的2个对象sessionStorage和localStorage。  他们是在HTM5中引入的2个新的存储对象，">
+<meta property="og:image" content="https://fancyfx.github.io/img/storage/usage.png">
+<meta property="og:image" content="https://fancyfx.github.io/img/storage/兼容性.png">
+<meta property="og:updated_time" content="2016-09-10T16:50:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="canvas 在IE8的降级兼容方案">
-<meta name="twitter:description" content="最近在做基于Chart.js的数据可视化图表展示，被要求需要兼容到IE8。经过搜索发现了google这个开源项目ExplorerCanvasIE8及以下的浏览器上不兼容canvas，可以使用ExplorerCanvas做兼容性的替代。
-
-兼容性检测1var canvasSupported = !!document.createElement(&amp;apos;canvas&amp;apos;).getCont">
+<meta name="twitter:title" content="web本地存储之Storage(DOM存储)">
+<meta name="twitter:description" content="1. 什么是Storage？  Storage又叫DOM存储，是W3C Web存储规范里面的一种。DOM存储被设计为用来提供一个更大存储量,更安全,更便捷的存储方法,从而可以代替掉将一些不需要让服务器知道的信息存储到cookies里的这种传统方法。
+  本文主要介绍Storage 最主要的2个对象sessionStorage和localStorage。  他们是在HTM5中引入的2个新的存储对象，">
+<meta name="twitter:image" content="https://fancyfx.github.io/img/storage/usage.png">
 
 
 
@@ -120,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="https://fancyfx.github.io/2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/"/>
+  <link rel="canonical" href="https://fancyfx.github.io/2016/07/24/2016/2016-07-24-web本地存储之Storage(DOM存储)/"/>
 
-  <title> canvas 在IE8的降级兼容方案 | Fancyxi的博客 </title>
+  <title> web本地存储之Storage(DOM存储) | Fancyxi的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +252,7 @@
             
             
               
-                canvas 在IE8的降级兼容方案
+                web本地存储之Storage(DOM存储)
               
             
           </h1>
@@ -264,8 +264,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-23T16:36:00+08:00" content="2016-07-23">
-              2016-07-23
+            <time itemprop="dateCreated" datetime="2016-07-24T00:46:00+08:00" content="2016-07-24">
+              2016-07-24
             </time>
           </span>
 
@@ -275,8 +275,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/" itemprop="commentsCount"></span>
+                <a href="/2016/07/24/2016/2016-07-24-web本地存储之Storage(DOM存储)/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/24/2016/2016-07-24-web本地存储之Storage(DOM存储)/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -299,16 +299,28 @@
       
 
       
-        <blockquote>
-<p>最近在做基于Chart.js的数据可视化图表展示，被要求需要兼容到IE8。<br>经过搜索发现了google这个开源项目<a href="https://github.com/arv/explorercanvas" target="_blank" rel="external">ExplorerCanvas</a><br>IE8及以下的浏览器上不兼容canvas，可以使用ExplorerCanvas做兼容性的替代。</p>
+        <h2 id="1-什么是Storage？"><a href="#1-什么是Storage？" class="headerlink" title="1. 什么是Storage？"></a>1. 什么是Storage？</h2><p>  Storage又叫DOM存储，是W3C Web存储规范里面的一种。DOM存储被设计为用来提供一个更大存储量,更安全,更便捷的存储方法,从而可以代替掉将一些不需要让服务器知道的信息存储到cookies里的这种传统方法。</p>
+<p>  本文主要介绍Storage 最主要的2个对象<code>sessionStorage</code>和<code>localStorage</code>。<br>  他们是在HTM5中引入的2个新的存储对象，都是Storage构造函数实例化出来的2个window全局对象。</p>
+<h2 id="2-与cookies的异同点"><a href="#2-与cookies的异同点" class="headerlink" title="2. 与cookies的异同点"></a>2. 与cookies的异同点</h2><p>  相同点：都是以建值对的的形式存储一段字符串</p>
+<p>  不同点：</p>
+<ul>
+<li>存储时间和存储大小上限不一样</li>
+<li><code>cookies</code>通常需要频繁和服务器保持通信，而<code>sessionStorage</code>和<code>localStorage</code>通常保存在本地作为本地数据使用。</li>
+</ul>
+<h2 id="3-sessionStorage和localStorage使用介绍"><a href="#3-sessionStorage和localStorage使用介绍" class="headerlink" title="3. sessionStorage和localStorage使用介绍"></a>3. <code>sessionStorage</code>和<code>localStorage</code>使用介绍</h2><h3 id="3-1-用法"><a href="#3-1-用法" class="headerlink" title="3.1 用法"></a>3.1 用法</h3><p>  一张图看懂如何使用这2个全局对象</p>
+<p><img src="/img/storage/usage.png" alt="使用方法"></p>
+<a id="more"></a>
+<h3 id="3-2-兼容性"><a href="#3-2-兼容性" class="headerlink" title="3.2 兼容性"></a>3.2 兼容性</h3><p><img src="/img/storage/兼容性.png" alt="兼容性"><br><strong>备注：globalStorage这是一个非标准对象，已经废弃</strong></p>
+<h3 id="3-3-sessionStorage和localStorage区别"><a href="#3-3-sessionStorage和localStorage区别" class="headerlink" title="3.3 sessionStorage和localStorage区别"></a>3.3 <code>sessionStorage</code>和<code>localStorage</code>区别</h3><ul>
+<li><p><code>localStorage</code> 没有存储时间限制，删除需要手动操作。这意味着如果你不删除<code>localStorage</code>保存的数据，它会一直保存在浏览器缓存文件里面。用户只要第一次加载时保存了<code>localStorage</code>数据，那么以后无论他何时打开了该网页，都可以直接读取。</p>
+<blockquote>
+<p>由于<code>localStorage</code>这种特性，目前用的比较多。</p>
 </blockquote>
-<h2 id="兼容性检测"><a href="#兼容性检测" class="headerlink" title="兼容性检测"></a>兼容性检测</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var canvasSupported = !!document.createElement(&apos;canvas&apos;).getContext;</div></pre></td></tr></table></figure>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>excanvas的例子中是这样使用的：</p>
-<p>#在html的<code>&lt;head&gt;&lt;/head&gt;</code>内引入所有的js</p>
-<p>#在html中的<code>&lt;body&gt;</code>的<code>onload</code>上绑定canvas绘图的初始方法</p>
-<p>#禁用动画<code>new Chart(ctx).Line(dataLine, {animation: false});</code><br>经过测试，发现：</p>
-<p>#<code>canvas</code>标签必须写在<code>excanvas</code>初始方法之后，即：<code>canvas</code>必须在<code>excanvas</code>初始完成后生成</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://github.com/chartjs/Chart.js/issues/477" target="_blank" rel="external">Error on IE7 and IE8, Object doesn’t support property or method ‘measureText’</a></p>
+</li>
+<li><p><code>sessionStorage</code> 用法和localStorage相同，但是只要你关闭浏览器，保存的数据就会被删除。<strong>因此实际项目中使用的较少</strong></p>
+</li>
+</ul>
+<h3 id="3-4-其他"><a href="#3-4-其他" class="headerlink" title="3.4 其他"></a>3.4 其他</h3><p>对于不支持 localStorage 对象的浏览器中使用 MDN 给出的兼容性代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">if (!window.localStorage) &#123;</div><div class="line">  window.localStorage = &#123;</div><div class="line">    getItem: function (sKey) &#123;</div><div class="line">      if (!sKey || !this.hasOwnProperty(sKey)) &#123; return null; &#125;</div><div class="line">      return unescape(document.cookie.replace(new RegExp(&quot;(?:^|.*;\\s*)&quot; + escape(sKey).replace(/[\-\.\+\*]/g, &quot;\\$&amp;&quot;) + &quot;\\s*\\=\\s*((?:[^;](?!;))*[^;]?).*&quot;), &quot;$1&quot;));</div><div class="line">    &#125;,</div><div class="line">    key: function (nKeyId) &#123; return unescape(document.cookie.replace(/\s*\=(?:.(?!;))*$/, &quot;&quot;).split(/\s*\=(?:[^;](?!;))*[^;]?;\s*/)[nKeyId]); &#125;,</div><div class="line">    setItem: function (sKey, sValue) &#123;</div><div class="line">      if(!sKey) &#123; return; &#125;</div><div class="line">      document.cookie = escape(sKey) + &quot;=&quot; + escape(sValue) + &quot;; path=/&quot;;</div><div class="line">      this.length = document.cookie.match(/\=/g).length;</div><div class="line">    &#125;,</div><div class="line">    length: 0,</div><div class="line">    removeItem: function (sKey) &#123;</div><div class="line">      if (!sKey || !this.hasOwnProperty(sKey)) &#123; return; &#125;</div><div class="line">      var sExpDate = new Date();</div><div class="line">      sExpDate.setDate(sExpDate.getDate() - 1);</div><div class="line">      document.cookie = escape(sKey) + &quot;=; expires=&quot; + sExpDate.toGMTString() + &quot;; path=/&quot;;</div><div class="line">      this.length--;</div><div class="line">    &#125;,</div><div class="line">    hasOwnProperty: function (sKey) &#123; return (new RegExp(&quot;(?:^|;\\s*)&quot; + escape(sKey).replace(/[\-\.\+\*]/g, &quot;\\$&amp;&quot;) + &quot;\\s*\\=&quot;)).test(document.cookie); &#125;</div><div class="line">  &#125;;</div><div class="line">  window.localStorage.length = (document.cookie.match(/\=/g) || window.localStorage).length;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -331,7 +343,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/canvas/" rel="tag">#canvas</a>
+            <a href="/tags/web本地存储/" rel="tag">#web本地存储</a>
           
         </div>
       
@@ -340,16 +352,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/23/2016/2016-07-23-简单的点击非当前区域隐藏元素实现/" rel="next" title="简单的点击非当前区域隐藏元素实现">
-                <i class="fa fa-chevron-left"></i> 简单的点击非当前区域隐藏元素实现
+              <a href="/2016/07/23/2016/2016-07-23-livereload/" rel="next" title="前度自动刷新工具liveReload">
+                <i class="fa fa-chevron-left"></i> 前度自动刷新工具liveReload
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/23/2016/2016-07-23-livereload/" rel="prev" title="前度自动刷新工具liveReload">
-                前度自动刷新工具liveReload <i class="fa fa-chevron-right"></i>
+              <a href="/2016/08/09/2016/2016-08-09-javascript模块化/" rel="prev" title="JavaScript模块化">
+                JavaScript模块化 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -399,8 +411,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/"
-           data-title="canvas 在IE8的降级兼容方案" data-url="https://fancyfx.github.io/2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/">
+      <div class="ds-thread" data-thread-key="2016/07/24/2016/2016-07-24-web本地存储之Storage(DOM存储)/"
+           data-title="web本地存储之Storage(DOM存储)" data-url="https://fancyfx.github.io/2016/07/24/2016/2016-07-24-web本地存储之Storage(DOM存储)/">
       </div>
     
   </div>
@@ -513,7 +525,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#兼容性检测"><span class="nav-number">1.</span> <span class="nav-text">兼容性检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法"><span class="nav-number">2.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-什么是Storage？"><span class="nav-number">1.</span> <span class="nav-text">1. 什么是Storage？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-与cookies的异同点"><span class="nav-number">2.</span> <span class="nav-text">2. 与cookies的异同点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-sessionStorage和localStorage使用介绍"><span class="nav-number">3.</span> <span class="nav-text">3. sessionStorage和localStorage使用介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-用法"><span class="nav-number">3.1.</span> <span class="nav-text">3.1 用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-兼容性"><span class="nav-number">3.2.</span> <span class="nav-text">3.2 兼容性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-sessionStorage和localStorage区别"><span class="nav-number">3.3.</span> <span class="nav-text">3.3 sessionStorage和localStorage区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-其他"><span class="nav-number">3.4.</span> <span class="nav-text">3.4 其他</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
