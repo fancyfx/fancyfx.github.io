@@ -793,6 +793,129 @@
             
               
                 
+                <a class="post-title-link" href="/2016/07/23/2016/2016-07-23-ajax笔记/" itemprop="url">
+                  Ajax笔记
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-23T14:37:00+08:00" content="2016-07-23">
+              2016-07-23
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/23/2016/2016-07-23-ajax笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/23/2016/2016-07-23-ajax笔记/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="创建Ajax的过程"><a href="#创建Ajax的过程" class="headerlink" title="创建Ajax的过程"></a>创建Ajax的过程</h1><ul>
+<li><p>创建XMLHttpRequest对象,也就是创建一个异步调用对象.</p>
+</li>
+<li><p>创建一个新的HTTP请求,并指定该HTTP请求的方法、URL及验证信息.</p>
+</li>
+<li><p>设置响应HTTP请求状态变化的函数.</p>
+</li>
+<li><p>发送HTTP请求.</p>
+</li>
+<li><p>获取异步调用返回的数据.</p>
+</li>
+<li><p>使用JavaScript和DOM实现局部刷新.</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var xhr = new XMLHttpRequest();</div><div class="line">xhr.onreadystatechange = function () &#123;</div><div class="line">	if (xhr.readyState === 4) &#123;</div><div class="line">		if (xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300 || xhr.status === 304) &#123;</div><div class="line">			alert(xhr.responseText);</div><div class="line">		&#125;else&#123;</div><div class="line">			alert(&quot;error:&quot; + xhr.status)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line">xhr.open(&apos;get&apos;, demo.php, true);</div><div class="line">xhr.send(null);</div></pre></td></tr></table></figure>
+<h2 id="如何解决跨域问题"><a href="#如何解决跨域问题" class="headerlink" title="如何解决跨域问题"></a>如何解决跨域问题</h2><blockquote>
+<p>CORS</p>
+</blockquote>
+<p>CORS需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。</p>
+<p>整个CORS通信过程，都是浏览器自动完成，不需要用户参与。对于开发者来说，CORS通信与同源的AJAX通信没有差别，代码完全一样。浏览器一旦发现AJAX请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。</p>
+<p>服务器端对于CORS的支持，主要就是通过设置Access-Control-Allow-Origin来进行的。如果浏览器检测到相应的设置，就可以允许Ajax进行跨域的访问。<br>
+          <div class="post-more-link text-center">
+            <a class="btn" href="/2016/07/23/2016/2016-07-23-ajax笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/07/23/2016-07-23-构造函数/" itemprop="url">
                   JavaScript 构造函数
                 </a>
@@ -922,7 +1045,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -932,7 +1055,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

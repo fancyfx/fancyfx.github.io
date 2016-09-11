@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="canvas," />
+  <meta name="keywords" content="Ajax," />
 
 
 
@@ -84,22 +84,58 @@
 
 
 
-<meta name="description" content="最近在做基于Chart.js的数据可视化图表展示，被要求需要兼容到IE8。经过搜索发现了google这个开源项目ExplorerCanvasIE8及以下的浏览器上不兼容canvas，可以使用ExplorerCanvas做兼容性的替代。
+<meta name="description" content="创建Ajax的过程
+创建XMLHttpRequest对象,也就是创建一个异步调用对象.
 
-兼容性检测1var canvasSupported = !!document.createElement(&amp;apos;canvas&amp;apos;).getCont">
+创建一个新的HTTP请求,并指定该HTTP请求的方法、URL及验证信息.
+
+设置响应HTTP请求状态变化的函数.
+
+发送HTTP请求.
+
+获取异步调用返回的数据.
+
+使用JavaScript和DOM实现局部刷新.
+
+
+123456789101112var xhr = new XMLHttpRequest();">
 <meta property="og:type" content="article">
-<meta property="og:title" content="canvas 在IE8的降级兼容方案">
-<meta property="og:url" content="https://fancyfx.github.io/2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/index.html">
+<meta property="og:title" content="Ajax笔记">
+<meta property="og:url" content="https://fancyfx.github.io/2016/07/23/2016/2016-07-23-ajax笔记/index.html">
 <meta property="og:site_name" content="Fancyxi的博客">
-<meta property="og:description" content="最近在做基于Chart.js的数据可视化图表展示，被要求需要兼容到IE8。经过搜索发现了google这个开源项目ExplorerCanvasIE8及以下的浏览器上不兼容canvas，可以使用ExplorerCanvas做兼容性的替代。
+<meta property="og:description" content="创建Ajax的过程
+创建XMLHttpRequest对象,也就是创建一个异步调用对象.
 
-兼容性检测1var canvasSupported = !!document.createElement(&amp;apos;canvas&amp;apos;).getCont">
-<meta property="og:updated_time" content="2016-09-05T11:24:45.000Z">
+创建一个新的HTTP请求,并指定该HTTP请求的方法、URL及验证信息.
+
+设置响应HTTP请求状态变化的函数.
+
+发送HTTP请求.
+
+获取异步调用返回的数据.
+
+使用JavaScript和DOM实现局部刷新.
+
+
+123456789101112var xhr = new XMLHttpRequest();">
+<meta property="og:updated_time" content="2016-09-11T17:05:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="canvas 在IE8的降级兼容方案">
-<meta name="twitter:description" content="最近在做基于Chart.js的数据可视化图表展示，被要求需要兼容到IE8。经过搜索发现了google这个开源项目ExplorerCanvasIE8及以下的浏览器上不兼容canvas，可以使用ExplorerCanvas做兼容性的替代。
+<meta name="twitter:title" content="Ajax笔记">
+<meta name="twitter:description" content="创建Ajax的过程
+创建XMLHttpRequest对象,也就是创建一个异步调用对象.
 
-兼容性检测1var canvasSupported = !!document.createElement(&amp;apos;canvas&amp;apos;).getCont">
+创建一个新的HTTP请求,并指定该HTTP请求的方法、URL及验证信息.
+
+设置响应HTTP请求状态变化的函数.
+
+发送HTTP请求.
+
+获取异步调用返回的数据.
+
+使用JavaScript和DOM实现局部刷新.
+
+
+123456789101112var xhr = new XMLHttpRequest();">
 
 
 
@@ -120,9 +156,9 @@
 
 
 
-  <link rel="canonical" href="https://fancyfx.github.io/2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/"/>
+  <link rel="canonical" href="https://fancyfx.github.io/2016/07/23/2016/2016-07-23-ajax笔记/"/>
 
-  <title> canvas 在IE8的降级兼容方案 | Fancyxi的博客 </title>
+  <title> Ajax笔记 | Fancyxi的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +288,7 @@
             
             
               
-                canvas 在IE8的降级兼容方案
+                Ajax笔记
               
             
           </h1>
@@ -264,7 +300,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-07-23T16:36:00+08:00" content="2016-07-23">
+            <time itemprop="dateCreated" datetime="2016-07-23T14:37:00+08:00" content="2016-07-23">
               2016-07-23
             </time>
           </span>
@@ -275,8 +311,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/" itemprop="commentsCount"></span>
+                <a href="/2016/07/23/2016/2016-07-23-ajax笔记/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/23/2016/2016-07-23-ajax笔记/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -299,16 +335,33 @@
       
 
       
-        <blockquote>
-<p>最近在做基于Chart.js的数据可视化图表展示，被要求需要兼容到IE8。<br>经过搜索发现了google这个开源项目<a href="https://github.com/arv/explorercanvas" target="_blank" rel="external">ExplorerCanvas</a><br>IE8及以下的浏览器上不兼容canvas，可以使用ExplorerCanvas做兼容性的替代。</p>
+        <h1 id="创建Ajax的过程"><a href="#创建Ajax的过程" class="headerlink" title="创建Ajax的过程"></a>创建Ajax的过程</h1><ul>
+<li><p>创建XMLHttpRequest对象,也就是创建一个异步调用对象.</p>
+</li>
+<li><p>创建一个新的HTTP请求,并指定该HTTP请求的方法、URL及验证信息.</p>
+</li>
+<li><p>设置响应HTTP请求状态变化的函数.</p>
+</li>
+<li><p>发送HTTP请求.</p>
+</li>
+<li><p>获取异步调用返回的数据.</p>
+</li>
+<li><p>使用JavaScript和DOM实现局部刷新.</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var xhr = new XMLHttpRequest();</div><div class="line">xhr.onreadystatechange = function () &#123;</div><div class="line">	if (xhr.readyState === 4) &#123;</div><div class="line">		if (xhr.status &gt;= 200 &amp;&amp; xhr.status &lt; 300 || xhr.status === 304) &#123;</div><div class="line">			alert(xhr.responseText);</div><div class="line">		&#125;else&#123;</div><div class="line">			alert(&quot;error:&quot; + xhr.status)</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line">xhr.open(&apos;get&apos;, demo.php, true);</div><div class="line">xhr.send(null);</div></pre></td></tr></table></figure>
+<h2 id="如何解决跨域问题"><a href="#如何解决跨域问题" class="headerlink" title="如何解决跨域问题"></a>如何解决跨域问题</h2><blockquote>
+<p>CORS</p>
 </blockquote>
-<h2 id="兼容性检测"><a href="#兼容性检测" class="headerlink" title="兼容性检测"></a>兼容性检测</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var canvasSupported = !!document.createElement(&apos;canvas&apos;).getContext;</div></pre></td></tr></table></figure>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><p>excanvas的例子中是这样使用的：</p>
-<p>#在html的<code>&lt;head&gt;&lt;/head&gt;</code>内引入所有的js</p>
-<p>#在html中的<code>&lt;body&gt;</code>的<code>onload</code>上绑定canvas绘图的初始方法</p>
-<p>#禁用动画<code>new Chart(ctx).Line(dataLine, {animation: false});</code><br>经过测试，发现：</p>
-<p>#<code>canvas</code>标签必须写在<code>excanvas</code>初始方法之后，即：<code>canvas</code>必须在<code>excanvas</code>初始完成后生成</p>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://github.com/chartjs/Chart.js/issues/477" target="_blank" rel="external">Error on IE7 and IE8, Object doesn’t support property or method ‘measureText’</a></p>
+<p>CORS需要浏览器和服务器同时支持。目前，所有浏览器都支持该功能，IE浏览器不能低于IE10。</p>
+<p>整个CORS通信过程，都是浏览器自动完成，不需要用户参与。对于开发者来说，CORS通信与同源的AJAX通信没有差别，代码完全一样。浏览器一旦发现AJAX请求跨源，就会自动添加一些附加的头信息，有时还会多出一次附加的请求，但用户不会有感觉。</p>
+<p>服务器端对于CORS的支持，主要就是通过设置Access-Control-Allow-Origin来进行的。如果浏览器检测到相应的设置，就可以允许Ajax进行跨域的访问。<br><a id="more"></a><br>对于IE9和IE8 可以使用以下兼容代码来实现 CORS<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">function createCORSRequest(method, url) &#123;</div><div class="line">	var xhr = new XMLHttpRequest();</div><div class="line">	if (&quot;withCredentials&quot; in xhr) &#123;</div><div class="line">		xhr.open(method, url, true)</div><div class="line">	&#125; else if(typeof XDomainRequest !== &quot;undefined&quot;)&#123;</div><div class="line">		xhr = new XDomainRequest();</div><div class="line">		xhr.open(method, url);</div><div class="line">	&#125;  else&#123;</div><div class="line">		xhr = null;</div><div class="line">	&#125;</div><div class="line">	return xhr;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>JSONP</p>
+</blockquote>
+<p>原理是：动态插入script标签，通过script标签引入一个js文件，这个js文件载入成功后会执行我们在url参数中指定的函数，并且会把我们需要的json数据作为参数传入。<br>本质上说：JSONP就是通过script标签访问远程.JS文件，然后在本地执行(解析数据)。<br>简单的示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function handleResponse(msg) &#123;</div><div class="line">	console.log(msg); // 获取数据并打印的回到函数</div><div class="line">&#125;</div><div class="line">// 创建script标签</div><div class="line">var script = document.createElement(&apos;script&apos;)</div><div class="line">script.src = &quot;http://freegeoip.net/json/?callback=handleResponse&quot;;</div><div class="line">// 通过这段URL 可以在本地打印但钱位置IP信息</div><div class="line">// callback就是这个地址返回的josn 数据的服务器端包装函数</div><div class="line">// 赋值给 handleResponse 函数进行调用</div><div class="line">document.body.insertBefore(script, document.body.firstChild);</div></pre></td></tr></table></figure></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>  还有一个其他跨域方法，如：<code>window.name</code> 、<code>document.domain</code>等。但笔者觉得都不如JSONP简单好用，而且也没有特别大的优势。</p>
+<p>  <strong>值得注意的是：包括JONSP等解决办法，这些都是一个HACK方法。都不如CROS的方案可靠和完善，所有有条件的话还是建议使用CORS，实在不行通过代理转发的方式实现跨域，我也觉得是可行的。</strong></p>
 
       
     </div>
@@ -331,7 +384,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/canvas/" rel="tag">#canvas</a>
+            <a href="/tags/Ajax/" rel="tag">#Ajax</a>
           
         </div>
       
@@ -340,16 +393,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/07/23/2016/2016-07-23-简单的点击非当前区域隐藏元素实现/" rel="next" title="简单的点击非当前区域隐藏元素实现">
-                <i class="fa fa-chevron-left"></i> 简单的点击非当前区域隐藏元素实现
+              <a href="/2016/07/23/2016-07-23-构造函数/" rel="next" title="JavaScript 构造函数">
+                <i class="fa fa-chevron-left"></i> JavaScript 构造函数
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/23/2016/2016-07-23-livereload/" rel="prev" title="前度自动刷新工具liveReload">
-                前度自动刷新工具liveReload <i class="fa fa-chevron-right"></i>
+              <a href="/2016/07/23/2016/2016-07-23-简单的点击非当前区域隐藏元素实现/" rel="prev" title="简单的点击非当前区域隐藏元素实现">
+                简单的点击非当前区域隐藏元素实现 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -399,8 +452,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/"
-           data-title="canvas 在IE8的降级兼容方案" data-url="https://fancyfx.github.io/2016/07/23/2016/2016-07-23-canvas 在IE8的降级兼容方案/">
+      <div class="ds-thread" data-thread-key="2016/07/23/2016/2016-07-23-ajax笔记/"
+           data-title="Ajax笔记" data-url="https://fancyfx.github.io/2016/07/23/2016/2016-07-23-ajax笔记/">
       </div>
     
   </div>
@@ -513,7 +566,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#兼容性检测"><span class="nav-number">1.</span> <span class="nav-text">兼容性检测</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用方法"><span class="nav-number">2.</span> <span class="nav-text">使用方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考资料"><span class="nav-number">3.</span> <span class="nav-text">参考资料</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#创建Ajax的过程"><span class="nav-number">1.</span> <span class="nav-text">创建Ajax的过程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何解决跨域问题"><span class="nav-number">1.1.</span> <span class="nav-text">如何解决跨域问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#总结"><span class="nav-number">1.1.1.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
