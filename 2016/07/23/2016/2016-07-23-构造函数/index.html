@@ -1,0 +1,685 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="JavaScript基础," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="能讲清楚你不会的知识，才代表正真学会了！
+
+什么是构造函数简单的说就是一种创建对象的模式
+我们都知道在JavaScript 中 可以简单的用对象字面量来创建一个对象person1。
+123456var person1 = &amp;#123;    name: &amp;apos;lili&amp;apos;,    say: function() &amp;#123;        return &amp;quot;I am &amp;qu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript 构造函数">
+<meta property="og:url" content="https://fancyfx.github.io/2016/07/23/2016/2016-07-23-构造函数/index.html">
+<meta property="og:site_name" content="Fancyxi的博客">
+<meta property="og:description" content="能讲清楚你不会的知识，才代表正真学会了！
+
+什么是构造函数简单的说就是一种创建对象的模式
+我们都知道在JavaScript 中 可以简单的用对象字面量来创建一个对象person1。
+123456var person1 = &amp;#123;    name: &amp;apos;lili&amp;apos;,    say: function() &amp;#123;        return &amp;quot;I am &amp;qu">
+<meta property="og:updated_time" content="2016-09-10T16:45:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript 构造函数">
+<meta name="twitter:description" content="能讲清楚你不会的知识，才代表正真学会了！
+
+什么是构造函数简单的说就是一种创建对象的模式
+我们都知道在JavaScript 中 可以简单的用对象字面量来创建一个对象person1。
+123456var person1 = &amp;#123;    name: &amp;apos;lili&amp;apos;,    say: function() &amp;#123;        return &amp;quot;I am &amp;qu">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6278229309505144000,
+      author: '博主'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="https://fancyfx.github.io/2016/07/23/2016/2016-07-23-构造函数/"/>
+
+  <title> JavaScript 构造函数 | Fancyxi的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Fancyxi的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-demo">
+          <a href="/demo" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sticky-note"></i> <br />
+            
+            deom
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JavaScript 构造函数
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-23T14:36:00+08:00" content="2016-07-23">
+              2016-07-23
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/07/23/2016/2016-07-23-构造函数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/07/23/2016/2016-07-23-构造函数/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>能讲清楚你不会的知识，才代表正真学会了！</p>
+</blockquote>
+<h1 id="什么是构造函数"><a href="#什么是构造函数" class="headerlink" title="什么是构造函数"></a>什么是构造函数</h1><p><strong>简单的说就是一种创建对象的模式</strong></p>
+<p>我们都知道在JavaScript 中 可以简单的用对象字面量来创建一个对象<code>person1</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var person1 = &#123;</div><div class="line">    name: &apos;lili&apos;,</div><div class="line">    say: function() &#123;</div><div class="line">        return &quot;I am &quot; + this.name;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>这个<code>person1</code>有<code>name</code>属性，<code>say()</code>方法。但是假如有很多个人，他们都有<code>name</code>和<code>say()</code> 的属性和方法，也是说我们创建很多遍上面的代码，我的天这样的代码要写N遍，我要爆炸了。<br><a id="more"></a><br>那么有没有一种简单的方法来创建具有相同属性和方法的对象的方式的了？<br>显然是有的，那就是<strong>构造函数</strong><br>直接看代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">function Person (name) &#123;</div><div class="line">    this.name = name;</div><div class="line">    this.say = function () &#123;</div><div class="line">        return &quot;I am &quot; + this.name;</div><div class="line">    &#125;;</div><div class="line">&#125;;</div><div class="line">var person1 = new Person(&apos;lili&apos;);</div><div class="line">var person2 = new Person(&apos;lucy&apos;);</div><div class="line">console.log(person1.say); // I am lili</div><div class="line">console.log(person2.say); // I am lucy</div></pre></td></tr></table></figure>
+<p>上面的就是利用构造函数<code>Person()</code>创建的<code>person1</code>和<code>person2</code>对象。</p>
+<p>当<code>person1</code>和<code>person2</code>通过new来调用这个构造函数时，函数体内将发生这些事情：</p>
+<ul>
+<li>创建一个空对象，将它的引用赋给this，并继承函数的原型。</li>
+<li>通过this将属性和方法添加至这个对象。</li>
+<li>最后返回this指向的新对象（如果没有手动返回其他的对象）。<br>用代码表示这个过程如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">var Person = function (name) &#123;</div><div class="line">    // 使用对象字面量创建新对象</div><div class="line">    // var this = &#123;&#125;;</div><div class="line"></div><div class="line">    // 添加属性和方法</div><div class="line">    this.name = name;</div><div class="line">    this.say = function () &#123;</div><div class="line">        return &quot;I am &quot; + this.name;</div><div class="line">    &#125;;</div><div class="line"></div><div class="line">    //return this;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>上例中，为简便起见，<code>say()</code>方法被添加至this中，结果就是不论何时调用<code>new Person()</code>，在内存中都会创建一个新函数（say()），显然这是效率很低的，因为所有实例的<code>say()</code>方法是一模一样的。最好的办法是将方法添加至<code>Person()</code>的原型中。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Person.prototype.say = function () &#123;</div><div class="line">    return &quot;I am &quot; + this.name;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h2 id="prototype-原型对象"><a href="#prototype-原型对象" class="headerlink" title="prototype 原型对象"></a>prototype 原型对象</h2><p>当我们创建一个函数时，该函数就会具备一个prototype属性，这个属性指向通过构造函数创建的那个函数的原型对象。通俗点讲原型对象就是内存中为其他对象提供共享属性和方法的对象。<br><strong>是不是没听懂？</strong><br>我们用面向对象的思想来解释，在JavaScript中 有一个根对象<code>function</code> 他里面有一个prototype属性，每次我们创建一个函数的时候都会继承根对象<code>function</code>的prototype属性。<br>现在我们在构造函数<code>Person()</code>里面给原型对象<code>prototype</code>添加了一个<code>say()</code>方法，其实就是重写了<code>prototype</code>对象。</p>
+<h2 id="构造函数和原型组合模式"><a href="#构造函数和原型组合模式" class="headerlink" title="构造函数和原型组合模式"></a>构造函数和原型组合模式</h2><p>说了这么其实我们在实际开发中只需要记住，<strong>使用构造函数来定义对象的属性，使用原型来定义共享的属性和方法</strong>，这样我们就可以传递不同的参数来创建出不同的对象，同时又拥有了共享的方法和属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">function Person (name) &#123;</div><div class="line">    this.name = name;</div><div class="line">&#125;</div><div class="line">Person.prototype.say = function () &#123;</div><div class="line">    return &quot;I am &quot; + this.name;</div><div class="line">&#125;</div><div class="line">var person1 = new Person(&apos;lili&apos;);</div><div class="line">var person2 = new Person(&apos;lucy&apos;);</div></pre></td></tr></table></figure>
+<h2 id="强制使用new的模式"><a href="#强制使用new的模式" class="headerlink" title="强制使用new的模式"></a>强制使用new的模式</h2><p>我们知道，构造函数和普通的函数本质一样，只是通过new调用而已。那么如果调用构造函数时忘记new会发生什么呢？漏掉new不会产生语法错误也不会有运行时错误，但可能会造成逻辑错误，导致执行结果不符合预期。这是因为如果不写new的话，函数内的this会指向全局对象（在浏览器端this指向window）。<br>因此在构造函数中首先检查this是否是构造函数的实例，如果不是，则通过new再次调用自己：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">function Waffle() &#123;</div><div class="line"></div><div class="line">    if (!(this instanceof Waffle)) &#123;</div><div class="line">        return new Waffle();</div><div class="line">    &#125;</div><div class="line">    this.tastes = &quot;yummy&quot;;</div><div class="line"></div><div class="line">&#125;</div><div class="line">Waffle.prototype.wantAnother = true;</div><div class="line"></div><div class="line">// 测试</div><div class="line">var first = new Waffle(),</div><div class="line">    second = Waffle();</div><div class="line"></div><div class="line">console.log(first.tastes); // &quot;yummy&quot;</div><div class="line">console.log(second.tastes); // &quot;yummy&quot;</div><div class="line"></div><div class="line">console.log(first.wantAnother); // true</div><div class="line">console.log(second.wantAnother); // true</div></pre></td></tr></table></figure>
+<h3 id="tips1-构造函数命名规范"><a href="#tips1-构造函数命名规范" class="headerlink" title="tips1 构造函数命名规范"></a>tips1 构造函数命名规范</h3><p>  注意：为了和普通函数名区别，构造函数一般首字母大写</p>
+<h3 id="tips2-构造函数分类"><a href="#tips2-构造函数分类" class="headerlink" title="tips2 构造函数分类"></a>tips2 构造函数分类</h3><p> <code>Person()</code> 这是一个<strong>自定义构造函数</strong>.<br> 在JavaScript中还有很多<strong>内置构造函数</strong>，例如：<code>Array()</code> <code>Object()</code> 等都是内置构造函数</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/JavaScript基础/" rel="tag">#JavaScript基础</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/23/2016/2016-07-23-ajax笔记/" rel="prev" title="Ajax笔记">
+                Ajax笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/07/23/2016/2016-07-23-构造函数/"
+           data-title="JavaScript 构造函数" data-url="https://fancyfx.github.io/2016/07/23/2016/2016-07-23-构造函数/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/img/fancyxi.png"
+               alt="Fancyxi" />
+          <p class="site-author-name" itemprop="name">Fancyxi</p>
+          <p class="site-description motion-element" itemprop="description">能讲清楚你不会的知识，才代表正真学会了！</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/fancyfx" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://weibo.com/fangxi520" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="fangxi520@icloud.com" target="_blank" title="E-mail">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                  E-mail
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是构造函数"><span class="nav-number">1.</span> <span class="nav-text">什么是构造函数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#prototype-原型对象"><span class="nav-number">1.1.</span> <span class="nav-text">prototype 原型对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造函数和原型组合模式"><span class="nav-number">1.2.</span> <span class="nav-text">构造函数和原型组合模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#强制使用new的模式"><span class="nav-number">1.3.</span> <span class="nav-text">强制使用new的模式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#tips1-构造函数命名规范"><span class="nav-number">1.3.1.</span> <span class="nav-text">tips1 构造函数命名规范</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tips2-构造函数分类"><span class="nav-number">1.3.2.</span> <span class="nav-text">tips2 构造函数分类</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Fancyxi</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"fancyxi"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
